@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    "corsheaders"
 ]
 
 MIDDLEWARE = [
@@ -47,6 +48,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware"
 ]
 
 ROOT_URLCONF = 'PhD_Managment.urls'
@@ -54,7 +57,7 @@ ROOT_URLCONF = 'PhD_Managment.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / "reactapps/build"],
+        'DIRS': [BASE_DIR / "original/dist"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -76,13 +79,18 @@ WSGI_APPLICATION = 'PhD_Managment.wsgi.application'
 DATABASES = {
 
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'arnav',
-        'USER': 'root',
-        'PASSWORD': 'Arnav@123',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'mydatabase',
     }
+
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': 'arnav',
+    #     'USER': 'root',
+    #     'PASSWORD': 'Arnav@123',
+    #     'HOST': '127.0.0.1',
+    #     'PORT': '3306',
+    # }
 }
 
 # Password validation
@@ -131,4 +139,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATICFILES_DIRS = [
     BASE_DIR / "reactapps/build/static"
+]
+
+CORS_ALLOWED_ORIGINS = [
+    'http://127.0.0.1:5173',
 ]

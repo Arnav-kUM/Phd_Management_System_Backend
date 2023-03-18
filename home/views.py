@@ -17,8 +17,8 @@ def index(request):
     #     y['v1'] = i[0]
     #     y['v2'] = i[1]
     #     y['v3'] = i[2]
-    # data = {
-    #     'var' : 'Arnav'
-    # }
-    return render(request,'index.html')
+    data = {
+        'var' : 'Arnav'
+    }
+    return JsonResponse(data)
 
