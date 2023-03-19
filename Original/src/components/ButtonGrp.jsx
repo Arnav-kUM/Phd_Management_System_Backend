@@ -21,11 +21,11 @@ function ButtonGrp() {
     <div className="flex justify-between ml-4 mr-4">
       <div>
         <a
-          class="group items-center justify-between gap-4 rounded-full border border-pantone-blue bg-pantone-blue px-5 py-3 transition-colors hover:bg-pantone-cool-gray-9 focus:outline-none focus:ring"
-          href="#"
+          className="group items-center justify-between gap-4 rounded-full border border-pantone-blue bg-pantone-blue px-5 py-3 transition-colors hover:bg-pantone-cool-gray-9 focus:outline-none focus:ring"
+          href="#/add_students"
         >
           <PersonAddAlt1Icon style={{ color: "white" }} />
-          <span class="ml-2 font-medium text-white transition-colors">
+          <span className="ml-2 font-medium text-white transition-colors">
             Add New Students
           </span>
         </a>
@@ -33,10 +33,10 @@ function ButtonGrp() {
       <div>
         {buttons.map((btn) => (
           <a
-            class="group mx-2 items-center justify-between gap-4 rounded-full border border-current px-5 py-3 text-pantone-blue transition-colors hover:bg-pantone-blue focus:outline-none focus:ring active:bg-pantone-blue"
+            className="group mx-2 items-center justify-between gap-4 rounded-full border border-current px-5 py-3 text-pantone-blue transition-colors hover:bg-pantone-blue focus:outline-none focus:ring active:bg-pantone-blue"
             href={btn.href}
           >
-            <span class="font-medium transition-colors group-hover:text-white">
+            <span className="font-medium transition-colors group-hover:text-white">
               <btn.icon className="mr-2" />
               {btn.name}
             </span>

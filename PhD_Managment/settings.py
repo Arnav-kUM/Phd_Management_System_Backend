@@ -134,13 +134,14 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
 # Added manually
 
 STATICFILES_DIRS = [
     BASE_DIR / "reactapps/build/static"
 ]
 
-CORS_ALLOWED_ORIGINS = [
-    'http://127.0.0.1:5173',
+CORS_ORIGIN_REGEX_WHITELIST = [
+    r"^http://localhost:\d+$",
+    r"^http://127.0.0.1:\d+$",
 ]
+

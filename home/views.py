@@ -1,24 +1,28 @@
-from django.shortcuts import render, HttpResponse
-import mysql.connector as sql
+from django.shortcuts import render
 from django.http import JsonResponse
-# Create your views here.
+
+data = [
+    {
+        "firstName": "John ",
+        "lastName": "Doe",
+    },
+    {
+        "firstName": "Jane",
+        "lastName": "Doe",
+    },
+]
 
 def index(request):
-    # D = sql.connect(host ='127.0.0.1',
-    #                                 port = "3306",
-    #                                 user = 'root',
-    #                                 password = 'Arnav@123',
-    #                                 database = 'arnav')
-    # cursor = D.cursor()
-    # query = "select * from employee"
-    # cursor.execute(query)
-    # y = {}
-    # for i in cursor:
-    #     y['v1'] = i[0]
-    #     y['v2'] = i[1]
-    #     y['v3'] = i[2]
-    data = {
-        'var' : 'Arnav'
-    }
-    return JsonResponse(data)
+    filtered_data = [{"firstName": d["firstName"], "lastName": d["lastName"]} for d in data]
+    return JsonResponse(filtered_data, safe=False)
 
+def add_user(request):
+    if request.method == "POST":
+        # Assuming the input fields have names "firstName" and "lastName"
+        new_data = {
+            "firstName": request.POST.get("firstName"),
+            "lastName": request.POST.get("lastName"),
+        }
+        print(new_data)
+        data.append(new_data)
+    return JsonResponse(data, safe=False)

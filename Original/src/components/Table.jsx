@@ -1,50 +1,22 @@
-import React, {useEffect} from "react";
+import React, { useEffect, useState } from "react";
 import { useTable, useSortBy } from "react-table";
-import axios from 'axios'
-
+import axios from "axios";
 
 const Table = () => {
+  const [data, setData] = useState([]);
+
   useEffect(() => {
     fetch();
-});
-const fetch = async () => {
+  }, []);
+
+  const fetch = async () => {
     try {
-        var data = await axios.get("http://127.0.0.1:8000");
-        console.log(data.data);
+      const response = await axios.get("http://127.0.0.1:8000");
+      setData(response.data);
     } catch (err) {
-        console.log(err);
+      console.log(err);
     }
-};
-  const data = React.useMemo(
-    () => [
-      {
-        firstName: "John ",
-        lastName: "Doe",
-        age: 32,
-        email: "john.doe@example.com",
-      },
-      {
-        firstName: "Jane",
-        lastName: "Doe",
-        age: 28,
-        email: "jane.doe@example.com",
-      },
-      {
-        firstName: "Bob",
-        lastName: "Smith",
-        age: 45,
-        email: "bob.smith@example.com",
-      },
-      {
-        firstName: "Alice",
-        lastName: "Jones",
-        age: 24,
-        email: "alice.jones@example.com",
-      },
-      
-    ],
-    []
-  );
+  };
 
   const columns = React.useMemo(
     () => [
@@ -56,54 +28,9 @@ const fetch = async () => {
         Header: "Last Name",
         accessor: "lastName",
       },
-      {
-        Header: "Age",
-        accessor: "age",
-      },
-      {
-        Header: "Email",
-        accessor: "email",
-      },
-      {
-        Header: "Address",
-        accessor: "address",
-      },
-      {
-        Header: "City",
-        accessor: "city",
-      },
-      {
-        Header: "State",
-        accessor: "state",
-      },
-      {
-        Header: "Zip Code",
-        accessor: "zipCode",
-      },
-      {
-        Header: "Phone Number",
-        accessor: "phoneNumber",
-      },
-      {
-        Header: "Occupation",
-        accessor: "occupation",
-      },
-      {
-        Header: "Company",
-        accessor: "company",
-      },
-      {
-        Header: "Salary",
-        accessor: "salary",
-      },
-      {
-        Header: "Dummy",
-        accessor: "dummy",
-      },
     ],
     []
   );
-  
 
   const {
     getTableProps,
@@ -121,10 +48,13 @@ const fetch = async () => {
 
   return (
     <div style={{ overflowX: "auto" }}>
-      <table  {...getTableProps()} className="table-fixed mt-10 divide-y divide-gray-200 border border-gray-400">
-        <thead >
+      <table
+        {...getTableProps()}
+        className="table-fixed mt-10 divide-y divide-gray-200 border border-gray-400"
+      >
+        <thead>
           {headerGroups.map((headerGroup) => (
-            <tr  {...headerGroup.getHeaderGroupProps()}>
+            <tr {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map((column) => (
                 <th
                   {...column.getHeaderProps(column.getSortByToggleProps())}
@@ -132,11 +62,7 @@ const fetch = async () => {
                 >
                   {column.render("Header")}
                   <span>
-                    {column.isSorted
-                      ? column.isSortedDesc
-                        ? " 🔽"
-                        : " 🔼"
-                      : ""}
+                    {column.isSorted ? (column.isSortedDesc ? " 🔽" : " 🔼") : ""}
                   </span>
                 </th>
               ))}
