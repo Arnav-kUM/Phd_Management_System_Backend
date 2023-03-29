@@ -78,19 +78,22 @@ WSGI_APPLICATION = 'PhD_Managment.wsgi.application'
 
 DATABASES = {
 
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'mydatabase',
-    }
-
     # 'default': {
-    #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME': 'arnav',
-    #     'USER': 'root',
-    #     'PASSWORD': 'Arnav@123',
-    #     'HOST': '127.0.0.1',
-    #     'PORT': '3306',
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': 'mydatabase',
     # }
+
+    'default': {  
+        'ENGINE': 'django.db.backends.mysql',  
+        'NAME': 'b0c783cnekofyeuexwed',  
+        'USER': 'unvtmxk05eogufwf',  
+        'PASSWORD': 'C1QI1IseSqo6izA8riZb',  
+        'HOST': 'b0c783cnekofyeuexwed-mysql.services.clever-cloud.com',  
+        'PORT': '3306',  
+        'OPTIONS': {  
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"  
+        }  
+    } 
 }
 
 # Password validation
