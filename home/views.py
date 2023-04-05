@@ -33,6 +33,7 @@ for i in cursor:
 def index(request):
     # x = request.
     filtered_data = [{"firstName": d["firstName"], "lastName": d["lastName"]} for d in data]
+    print('Hello',request.build_absolute_uri())
     return JsonResponse(filtered_data, safe=False)
 
 def add_user(request):

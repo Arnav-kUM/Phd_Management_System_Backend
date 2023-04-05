@@ -2,21 +2,32 @@ import React from "react";
 import PersonAddAlt1Icon from "@mui/icons-material/PersonAddAlt1";
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
-
-const buttons = [
-  {
-    name: "Filters",
-    href: "#",
-    icon: FilterAltIcon,
-  },
-  {
-    name: "Download",
-    href: "#",
-    icon: ArrowDownwardIcon,
-  },
-];
+import { useNavigate } from "react-router-dom";
 
 function ButtonGrp() {
+  const history = useNavigate();
+
+  const buttons = [
+    {
+      name: "Filters",
+      href: "hi",
+      icon: FilterAltIcon,
+      handleClick: () => {
+        console.log("Hello");
+        history({
+          pathname: "/",
+          // state: {"Name": "filtered"}
+          search: "?sort=date&order=newest",
+        });
+      },
+    },
+    {
+      name: "Download",
+      href: "#",
+      icon: ArrowDownwardIcon,
+    },
+  ];
+
   return (
     <div className="flex justify-between ml-4 mr-4">
       <div>
@@ -32,16 +43,17 @@ function ButtonGrp() {
       </div>
       <div>
         {buttons.map((btn) => (
-          <a
+          <button
             className="group mx-2 items-center justify-between gap-4 rounded-full border border-current px-5 py-3 text-pantone-blue transition-colors hover:bg-pantone-blue focus:outline-none focus:ring active:bg-pantone-blue"
             key={btn.name}
             href={btn.href}
+            onClick={button.handleClick}
           >
             <span className="font-medium transition-colors group-hover:text-white">
               <btn.icon />
               <span className="hidden md:inline-block ml-2">{btn.name}</span>
             </span>
-          </a>
+          </button>
         ))}
       </div>
     </div>
