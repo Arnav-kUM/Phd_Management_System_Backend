@@ -5,8 +5,8 @@ import LogoutIcon from "@mui/icons-material/Logout";
 
 const links = [
   {
-    name: "Student Details",
-    href: "#/student_details",
+    name: "Student Logbook",
+    href: "#/student_logbook",
   },
   {
     name: "Database",
@@ -22,9 +22,9 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="bg-white">
+    <header className="bg-white w-screen">
       <nav
-        className="mx-auto flex max-w-7xl items-center justify-between px-6 pb-6 pt-2 lg:px-8"
+        className="mx-auto flex w-full items-center justify-between px-6 pb-6 pt-2 lg:px-8"
         aria-label="Global"
       >
         <div className="flex lg:flex-1">
@@ -47,6 +47,7 @@ export default function Header() {
           {links.map((link) => (
             <a
               href={link.href}
+              key={link.href}
               className="font-semibold leading-6 hover:text-pantone-blue transition-colors hover:scale-105"
             >
               {link.name}
@@ -55,7 +56,7 @@ export default function Header() {
         </Popover.Group>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <a
-            href="#"
+            href="#/login"
             className="font-semibold leading-6 text-pantone-gray-5 hover:text-red-600 transition-colors hover:scale-105"
           >
             Logout
@@ -88,6 +89,7 @@ export default function Header() {
                 {links.map((link) => (
                   <a
                     href={link.href}
+                    key={link.href}
                     className="-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-pantone-gray-5 hover:text-pantone-blue transition-colors"
                   >
                     {link.name}
@@ -96,7 +98,7 @@ export default function Header() {
               </div>
               <div className="py-6">
                 <a
-                  href="#"
+                  href="#/login"
                   className="-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-7 text-pantone-gray-5 hover:text-red-600 transition-colors"
                 >
                   Logout

@@ -25,7 +25,7 @@ function ButtonGrp() {
           href="#/add_students"
         >
           <PersonAddAlt1Icon style={{ color: "white" }} />
-          <span className="ml-2 font-medium text-white transition-colors">
+          <span className="ml-2 font-medium text-white transition-colors hidden md:inline-block">
             Add New Students
           </span>
         </a>
@@ -34,11 +34,12 @@ function ButtonGrp() {
         {buttons.map((btn) => (
           <a
             className="group mx-2 items-center justify-between gap-4 rounded-full border border-current px-5 py-3 text-pantone-blue transition-colors hover:bg-pantone-blue focus:outline-none focus:ring active:bg-pantone-blue"
+            key={btn.name}
             href={btn.href}
           >
             <span className="font-medium transition-colors group-hover:text-white">
-              <btn.icon className="mr-2" />
-              {btn.name}
+              <btn.icon />
+              <span className="hidden md:inline-block ml-2">{btn.name}</span>
             </span>
           </a>
         ))}

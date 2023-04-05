@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import Header from "../components/Header";
 
 const AddUserForm = ({ updateTableData }) => {
   const [formData, setFormData] = useState({
@@ -33,13 +34,28 @@ const AddUserForm = ({ updateTableData }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="firstName">First Name:</label>
-      <input type="text" name="firstName" value={formData.firstName} onChange={handleInputChange} />
-      <label htmlFor="lastName">Last Name:</label>
-      <input type="text" name="lastName" value={formData.lastName} onChange={handleInputChange} />
-      <button type="submit">Submit</button>
-    </form>
+    <div>
+      <Header />
+      <div>
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="firstName">First Name:</label>
+          <input
+            type="text"
+            name="firstName"
+            value={formData.firstName}
+            onChange={handleInputChange}
+          />
+          <label htmlFor="lastName">Last Name:</label>
+          <input
+            type="text"
+            name="lastName"
+            value={formData.lastName}
+            onChange={handleInputChange}
+          />
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
   );
 };
 

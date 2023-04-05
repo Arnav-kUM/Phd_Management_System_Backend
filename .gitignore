@@ -1,0 +1,12 @@
+home/__pycache__/*.pyc
+home/__pycache__/*
+home/__pycache__/__init__.cpython-311.pyc
+home/__pycache__/urls.cpython-311.pyc
+home/__pycache__/views.cpython-311.pyc
+home/migrations/__pycache__/__init__.cpython-311.pyc
+PhD_Managment/__pycache__/*
+PhD_Managment/__pycache__/*.pyc
+PhD_Managment/__pycache__/__init__.cpython-311.pyc
+PhD_Managment/__pycache__/settings.cpython-311.pyc
+PhD_Managment/__pycache__/urls.cpython-311.pyc
+PhD_Managment/__pycache__/wsgi.cpython-311.pyc
