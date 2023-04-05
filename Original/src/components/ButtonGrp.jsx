@@ -47,7 +47,7 @@ function ButtonGrp() {
             className="group mx-2 items-center justify-between gap-4 rounded-full border border-current px-5 py-3 text-pantone-blue transition-colors hover:bg-pantone-blue focus:outline-none focus:ring active:bg-pantone-blue"
             key={btn.name}
             href={btn.href}
-            onClick={button.handleClick}
+            onClick={btn.handleClick}
           >
             <span className="font-medium transition-colors group-hover:text-white">
               <btn.icon />
