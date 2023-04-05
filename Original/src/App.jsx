@@ -13,7 +13,7 @@ function App() {
           <Routes>
             <Route path="/" exact element={<Database />} />
             <Route path="/exam_invigilation" element={<Exam />} />
-            <Route path="/student_details" element={<StudentLog />} />
+            <Route path="/student_logbook" element={<StudentLog />} />
             <Route path="/add_students" element={<AddStudent />} />
             <Route path="/login" element={<Login />} />
           </Routes>
