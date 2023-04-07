@@ -2,31 +2,38 @@ import React from "react";
 import PersonAddAlt1Icon from "@mui/icons-material/PersonAddAlt1";
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
-import { useNavigate } from "react-router-dom";
+import axios from 'axios';
 
 function ButtonGrp() {
-const history = useNavigate();
 
-const buttons = [
-  {
-    name: "Filters",
-    href: "hi",
-    icon: FilterAltIcon,
-    handleClick: () => {
-      console.log('Hello')
-      history({pathname:"/",
-        // state: {"Name": "filtered"}
-        search: '?sort=date&order=newest',
-      });
-    }
+  const buttons = [
+    {
+      name: 'Filters',
+      href: '#',
+      icon: FilterAltIcon,
+      handleClick: () => {
+        const queryParams = { yourQueryParam: '1' };
+        const url = "http://127.0.0.1:8000/parameter";
 
-  },
-  {
-    name: "Download",
-    href: "#",
-    icon: ArrowDownwardIcon,
-  },
-];
+        axios({
+          method: 'post',
+          url: url,
+          data: queryParams,
+          headers: { 'Content-Type': 'application/json' },
+          withCredentials: true
+        }).then(response => {
+          console.log(response.data);
+        }).catch(error => {
+          console.log(error);
+        });
+      },
+    },
+    {
+      name: 'Download',
+      href: '#',
+      icon: ArrowDownwardIcon,
+    },
+  ];
 
   return (
     <div className="flex justify-between ml-4 mr-4">
@@ -43,16 +50,13 @@ const buttons = [
       </div>
       <div>
         {buttons.map((button) => (
-
           <button className="group mx-2 items-center justify-between gap-4 rounded-full border border-current px-5 py-3 text-pantone-blue transition-colors hover:bg-pantone-blue focus:outline-none focus:ring active:bg-pantone-blue"
-          key={button.name} href={button.href} onClick={button.handleClick}>
-          <span className="font-medium transition-colors group-hover:text-white"> 
-            
-            <button.icon className="mr-2"/>
-            {button.name}
-          </span>
-        </button>
-          
+            key={button.name} href={button.href} onClick={button.handleClick}>
+            <span className="font-medium transition-colors group-hover:text-white">
+              <button.icon className="mr-2"/>
+              {button.name}
+            </span>
+          </button>
         ))}
       </div>
     </div>
@@ -60,4 +64,3 @@ const buttons = [
 }
 
 export default ButtonGrp;
-
